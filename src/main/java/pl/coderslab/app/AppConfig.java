@@ -17,19 +17,7 @@ import javax.persistence.EntityManagerFactory;
 @EnableTransactionManagement
 public class AppConfig implements WebMvcConfigurer {
 
-    @Bean
-    public LocalEntityManagerFactoryBean entityManagerFactory() {
-        LocalEntityManagerFactoryBean entityManagerFactoryBean
-                = new LocalEntityManagerFactoryBean();
-        entityManagerFactoryBean.setPersistenceUnitName("SpringCMSPersistenceUnit");
-        return entityManagerFactoryBean;
-    }
-    @Bean
-    public JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
-        JpaTransactionManager jpaTransactionManager =
-                new JpaTransactionManager(entityManagerFactory);
-        return jpaTransactionManager;
-    }
+
 
 
 }
