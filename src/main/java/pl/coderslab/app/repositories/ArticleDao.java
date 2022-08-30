@@ -35,7 +35,7 @@ public class ArticleDao {
                 article : entityManager.merge(article));
     }
 
-    public List<Article> findall(){
+    public List<Article> findAll(){
         Query query = entityManager.createQuery("SELECT article FROM Article article", Article.class);
         return query.getResultList();
     }

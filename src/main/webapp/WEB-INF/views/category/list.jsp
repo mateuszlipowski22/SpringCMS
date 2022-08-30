@@ -1,17 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: mateusz
-  Date: 29.08.2022
-  Time: 22:42
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<jsp:include page="/WEB-INF/views/static/header.jsp"/>
+
 <div class="hero-body">
     <div class="container has-text-centered">
         <p class="title">
@@ -19,7 +8,7 @@
         </p>
     </div>
     <div class="table-container">
-        <table class="table is-fullwidth is-bordered">
+        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
             <thead>
             <tr>
                 <th>Id</th>
@@ -58,5 +47,4 @@
         </form>
     </div>
 </div>
-</body>
-</html>
+<jsp:include page="/WEB-INF/views/static/footer.jsp"/>

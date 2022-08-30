@@ -4,42 +4,33 @@
 <div class="hero-body">
     <div class="container has-text-centered">
         <p class="title">
-            CMS
+            All authors
         </p>
     </div>
-
-    <div class="container has-text-centered">
-        <p class="title">
-            Latest five Articles
-        </p>
-    </div>
-
     <div class="table-container">
-        <table class="table is-fullwidth is-bordered">
+        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
             <thead>
             <tr>
                 <th>Id</th>
-                <th>Title</th>
-                <th>Creation Date</th>
-                <th>Content</th>
+                <th>First name</th>
+                <th>Last name</th>
                 <th>Actions</th>
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="articles" items="${lastFiveArticles}">
+            <c:forEach var="author" items="${authors}">
                 <tr>
-                    <td>${articles.id}</td>
-                    <td>${articles.title}</td>
-                    <td>${articles.createdOn}</td>
-                    <td>${articles.content}</td>
+                    <td>${author.id}</td>
+                    <td>${author.firstName}</td>
+                    <td>${author.lastName}</td>
                     <td>
                         <nav class="navbar">
                             <div class="container">
                                 <div class="navbar-menu">
-                                    <a href="/edit-article?id=${articles.id}">
+                                    <a href="/edit-category?id=${author.id}">
                                         <button type="submit" class="button button is-primary">Edit</button>
                                     </a>
-                                    <a href="/delete-article?id=${articles.id}">
+                                    <a href="/delete-category?id=${author.id}">
                                         <button type="submit" class="button button is-light">Delete</button>
                                     </a>
                                 </div>
@@ -51,8 +42,8 @@
         </table>
     </div>
     <div class="container has-text-centered">
-        <form method="get" action="/add-article">
-            <button type="submit" class="button is-link">Add new article</button>
+        <form method="get" action="/add-author">
+            <button type="submit" class="button is-link">Add new author</button>
         </form>
     </div>
 </div>

@@ -4,16 +4,9 @@
 <div class="hero-body">
     <div class="container has-text-centered">
         <p class="title">
-            CMS
+            All articles
         </p>
     </div>
-
-    <div class="container has-text-centered">
-        <p class="title">
-            Latest five Articles
-        </p>
-    </div>
-
     <div class="table-container">
         <table class="table is-fullwidth is-bordered">
             <thead>
@@ -26,7 +19,7 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="articles" items="${lastFiveArticles}">
+            <c:forEach var="articles" items="${articles}">
                 <tr>
                     <td>${articles.id}</td>
                     <td>${articles.title}</td>
@@ -54,6 +47,6 @@
         <form method="get" action="/add-article">
             <button type="submit" class="button is-link">Add new article</button>
         </form>
-    </div>
+    </div
 </div>
 <jsp:include page="/WEB-INF/views/static/footer.jsp"/>
