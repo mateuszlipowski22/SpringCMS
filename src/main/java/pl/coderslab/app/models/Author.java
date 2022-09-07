@@ -1,6 +1,8 @@
 package pl.coderslab.app.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="authors")
@@ -11,8 +13,9 @@ public class Author {
             GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty
     private String firstName;
-
+    @NotEmpty
     private String lastName;
 
     public void setId(Long id) {

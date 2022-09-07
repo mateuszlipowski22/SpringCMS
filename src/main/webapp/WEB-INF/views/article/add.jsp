@@ -5,7 +5,7 @@
 <div class="hero-body">
     <div class="container has-text-centered">
         <p class="title">
-            Add New Category
+            Add New Article
         </p>
     </div>
     <div class="table-container">
@@ -15,11 +15,17 @@
                 <div class="input">
                     <form:input path="title" cssClass="input"></form:input>
                 </div>
+                <div>
+                    <form:errors path="title" cssClass="error" />
+                </div>
             </div>
             <div class="field">
                 <label class="label">Content</label>
                 <div class="input">
                     <form:input path="content" cssClass="input"></form:input>
+                </div>
+                <div>
+                    <form:errors path="content" cssClass="error" />
                 </div>
             </div>
             <div class="field">
@@ -33,6 +39,9 @@
                 <label class="label">Categories</label>
                 <div class="input">
                     <form:select path="categories" items="${categories}" itemLabel="name" itemValue="id" multiple="true"></form:select>
+                </div>
+                <div>
+                    <form:errors path="categories" cssClass="error" />
                 </div>
             </div>
 

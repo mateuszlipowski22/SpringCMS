@@ -15,11 +15,17 @@
                 <div class="input">
                     <form:input path="title" cssClass="input"></form:input>
                 </div>
+                <div>
+                    <form:errors path="title" cssClass="error" />
+                </div>
             </div>
             <div class="field">
                 <label class="label">Content</label>
                 <div class="input">
                     <form:input path="content" cssClass="input"></form:input>
+                </div>
+                <div>
+                    <form:errors path="content" cssClass="error" />
                 </div>
             </div>
             <div class="field">
@@ -27,12 +33,16 @@
                 <div class="input">
                     <form:select path="author" items="${authors}" itemLabel="lastName" itemValue="id"/>
                 </div>
+
             </div>
 
             <div class="field">
                 <label class="label">Categories</label>
                 <div class="input">
                     <form:select path="categories" items="${categories}" itemLabel="name" itemValue="id" multiple="true"></form:select>
+                </div>
+                <div>
+                    <form:errors path="categories" cssClass="error" />
                 </div>
             </div>
             <form:hidden path="id"></form:hidden>

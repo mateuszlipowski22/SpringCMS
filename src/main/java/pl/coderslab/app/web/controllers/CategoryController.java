@@ -2,10 +2,13 @@ package pl.coderslab.app.web.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.coderslab.app.models.Category;
 import pl.coderslab.app.repositories.CategoryDao;
+
+import javax.validation.Valid;
 
 @Controller
 public class CategoryController {
@@ -29,7 +32,10 @@ public class CategoryController {
     }
 
     @PostMapping("/add-category")
-    public String processAddCategoryForm(Category category){
+    public String processAddCategoryForm(@Valid Category category, BindingResult result){
+        if (result.hasErrors()) {
+            return "category/add";
+        }
         categoryDao.saveCategory(category);
         return "redirect:/list-category";
     }
@@ -41,7 +47,10 @@ public class CategoryController {
     }
 
     @PostMapping("/edit-category")
-    public String processEditCategoryForm(Category category, Long id){
+    public String processEditCategoryForm(@Valid Category category, BindingResult result, Long id){
+        if (result.hasErrors()) {
+            return "category/edit";
+        }
         Category dbCategory=categoryDao.findById(id);
         dbCategory.setDescription(category.getDescription());
         dbCategory.setName(category.getName());

@@ -1,7 +1,9 @@
 package pl.coderslab.app.web.controllers;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,6 +14,7 @@ import pl.coderslab.app.repositories.ArticleDao;
 import pl.coderslab.app.repositories.AuthorDao;
 import pl.coderslab.app.repositories.CategoryDao;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -50,7 +53,10 @@ public class ArticleController {
     }
 
     @PostMapping("/add-article")
-    public String processAddArticleForm(Article article){
+    public String processAddArticleForm(@Valid Article article, BindingResult result){
+        if(result.hasErrors()){
+            return "article/add";
+        }
         articleDao.saveArticle(article);
         return "redirect:/list-article";
     }
@@ -62,7 +68,10 @@ public class ArticleController {
     }
 
     @PostMapping("/edit-article")
-    public String processEditArticleForm(Article article, Long id){
+    public String processEditArticleForm(@Valid Article article, BindingResult result, Long id){
+        if(result.hasErrors()){
+            return "article/edit";
+        }
         Article dbArticle=articleDao.findById(id);
         dbArticle.setAuthor(article.getAuthor());
         dbArticle.setCategories(article.getCategories());
@@ -79,7 +88,7 @@ public class ArticleController {
         return "article/delete";
     }
 
-    @PostMapping("/delete-Article")
+    @PostMapping("/delete-article")
     public String processDeleteArticleForm(Long id){
         articleDao.delete(articleDao.findById(id));
         return "redirect:/list-article";

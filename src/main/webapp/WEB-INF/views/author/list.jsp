@@ -27,10 +27,10 @@
                         <nav class="navbar">
                             <div class="container">
                                 <div class="navbar-menu">
-                                    <a href="/edit-category?id=${author.id}">
+                                    <a href="/edit-author?id=${author.id}">
                                         <button type="submit" class="button button is-primary">Edit</button>
                                     </a>
-                                    <a href="/delete-category?id=${author.id}">
+                                    <a href="/delete-author?id=${author.id}">
                                         <button type="submit" class="button button is-light">Delete</button>
                                     </a>
                                 </div>

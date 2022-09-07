@@ -21,6 +21,9 @@
                 <div class="input">
                     <form:input path="name" cssClass="input"></form:input>
                 </div>
+                <div>
+                    <form:errors path="name" cssClass="error" />
+                </div>
             </div>
             <div class="control">
                 <button type="submit" class="button is-link">Add</button>

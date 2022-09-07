@@ -4,6 +4,9 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,6 +21,8 @@ public class Article {
             GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty
+    @Size(max=200)
     private String title;
 
     @ManyToOne
@@ -25,8 +30,12 @@ public class Article {
     private Author author;
 
     @OneToMany
+    @NotNull
+    @Size(min=1)
     private List<Category> categories=new ArrayList<>();
 
+    @NotEmpty
+    @Size(min=500)
     private String content;
 
 

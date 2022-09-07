@@ -2,12 +2,15 @@ package pl.coderslab.app.web.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.coderslab.app.models.Author;
 import pl.coderslab.app.models.Category;
 import pl.coderslab.app.repositories.AuthorDao;
 import pl.coderslab.app.repositories.CategoryDao;
+
+import javax.validation.Valid;
 
 @Controller
 public class AuthorController {
@@ -31,7 +34,10 @@ public class AuthorController {
     }
 
     @PostMapping("/add-author")
-    public String processAddAuthorForm(Author author){
+    public String processAddAuthorForm(@Valid Author author, BindingResult result){
+        if(result.hasErrors()){
+            return "author/add";
+        }
         authorDao.saveAuthor(author);
         return "redirect:/list-author";
     }
@@ -43,7 +49,10 @@ public class AuthorController {
     }
 
     @PostMapping("/edit-author")
-    public String processEditAuthorForm(Author author, Long id){
+    public String processEditAuthorForm(@Valid Author author, BindingResult result, Long id){
+        if(result.hasErrors()){
+            return "author/edit";
+        }
         Author dbAuthor=authorDao.findById(id);
         dbAuthor.setFirstName(author.getFirstName());
         dbAuthor.setLastName(author.getLastName());

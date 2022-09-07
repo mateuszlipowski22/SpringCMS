@@ -15,12 +15,18 @@
                 <div class="input">
                     <form:input path="firstName" cssClass="input"></form:input>
                 </div>
+                <div>
+                    <form:errors path="firstName" cssClass="error" />
+                </div>
             </div>
             <div class="field">
                 <label class="label">Last Name</label>
                 <div class="input">
                     <form:hidden path="id"></form:hidden>
                     <form:input path="lastName" cssClass="input"></form:input>
+                </div>
+                <div>
+                    <form:errors path="lastName" cssClass="error" />
                 </div>
             </div>
             <div class="control">
